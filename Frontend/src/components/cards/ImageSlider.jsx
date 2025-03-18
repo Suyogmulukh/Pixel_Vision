@@ -1,5 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
-import '../../App.css'
+import { motion } from 'framer-motion';
+import '../../App.css';
+import blurUnblur1 from '../../assets/Blur-unblur-1.jpg';
+import blurUnblur2 from '../../assets/Blur-unblur-2.jpg';
+import D1 from '../../assets/d-1.jpg';
+import D2 from '../../assets/d-2.jpg';
+import old1 from '../../assets/old-1.jpg';
+import old2 from '../../assets/old-2.jpg';
 
 const ImageSlider = () => {
     const sliderRefs = useRef([]);
@@ -32,113 +39,77 @@ const ImageSlider = () => {
         moveSlider(offsetX, activeIndex);
     };
 
-useEffect(() => {
-    const handleMouseUp = () => {
-        setIsActive(false);
-        setActiveIndex(null);
-    };
-    const handleMouseMove = (event) => onMouseMove(event);
+    useEffect(() => {
+        const handleMouseUp = () => {
+            setIsActive(false);
+            setActiveIndex(null);
+        };
+        const handleMouseMove = (event) => onMouseMove(event);
 
-    document.addEventListener('mouseup', handleMouseUp);
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('touchend', handleMouseUp);
-    document.addEventListener('touchmove', handleMouseMove);
+        document.addEventListener('mouseup', handleMouseUp);
+        document.addEventListener('mousemove', handleMouseMove);
+        document.addEventListener('touchend', handleMouseUp);
+        document.addEventListener('touchmove', handleMouseMove);
 
-    return () => {
-        document.removeEventListener('mouseup', handleMouseUp);
-        document.removeEventListener('mousemove', handleMouseMove);
-        document.removeEventListener('touchend', handleMouseUp);
-        document.removeEventListener('touchmove', handleMouseMove);
-    };
-}, [isActive, activeIndex]);
+        return () => {
+            document.removeEventListener('mouseup', handleMouseUp);
+            document.removeEventListener('mousemove', handleMouseMove);
+            document.removeEventListener('touchend', handleMouseUp);
+            document.removeEventListener('touchmove', handleMouseMove);
+        };
+    }, [isActive, activeIndex]);
 
-return (
-    <div>
-    <div className='relative h-[400px] w-[1300px] top-10 gap-16 flex items-center justify-between bg-[#7d7e8a] '>
-           <div className='ml-12 h-96 w-[1200px] flex items-center justify-between absolute bg-black '>
-             {[0, 1, 2,].map((index) => (
-                
-            <div
-                key={index}
-                ref={el => sliderRefs.current[index] = el}
-                className="comparison-container gap-10 h-72 w-52 overflow-hidden relative "
-                onMouseDown={(e) => {
-                    setIsActive(true);
-                    setActiveIndex(index);
-                    onMouseMove(e);
-                }}
-                onTouchStart={(e) => {
-                    setIsActive(true);
-                    setActiveIndex(index);
-                    onMouseMove(e);cd
-                }}
-            >
-                <img
-                    src="https://images.pexels.com/photos/2071882/pexels-photo-2071882.jpeg?cs=srgb&dl=pexels-wojciech-kumpicki-1084687-2071882.jpg&fm=jpg"
-                    alt="Before Image"
-                    className="comparison-image--before"
-                />
+    const images = [
+        { before: old2, after: old1 },
+        { before: blurUnblur1, after: blurUnblur2 },
+        { before: D1, after: D2 }
+    ];
+
+    return (
+        <div className='relative top-48 gap-16 flex items-center justify-between'>
+            {images.map((image, index) => (
                 <div
-                    ref={el => imageAfterRefs.current[index] = el}
-                    className="comparison-image--after"
+                    key={index}
+                    ref={el => sliderRefs.current[index] = el}
+                    className="comparison-container ml-32 -top-36 h-56 w-72 overflow-hidden relative rounded-3xl"
+                    onMouseDown={(e) => {
+                        setIsActive(true);
+                        setActiveIndex(index);
+                        onMouseMove(e);
+                    }}
+                    onTouchStart={(e) => {
+                        setIsActive(true);
+                        setActiveIndex(index);
+                        onMouseMove(e);
+                    }}
                 >
                     <img
-                        src="https://i.pinimg.com/736x/2c/8e/98/2c8e981280d108b806c2e07bfbcc15b9.jpg"
-                        alt="After Image"
+                        src={image.before}
+                        alt="Before Image"
+                        className="comparison-image--before object-cover object-center"
                     />
-                </div>
-                <div
-                    ref={el => sliderHandleRefs.current[index] = el}
-                    className="slider-handle" />
-                <p className="label label--left">Image One</p>
-                <p className="label label--right">Image Two</p>
-            </div>
-        ))}
-        </div>
-</div>
-        {/* <div className='relative top-80 gap-16 flex items-center justify-between'>
-        {[0, 1, 2,].map((index) => (
-            <div
-                key={index}
-                ref={el => sliderRefs.current[index] = el}
-                className="comparison-container ml-6 -top-36 h-96 w-96 overflow-hidden relative"
-                onMouseDown={(e) => {
-                    setIsActive(true);
-                    setActiveIndex(index);
-                    onMouseMove(e);
-                }}
-                onTouchStart={(e) => {
-                    setIsActive(true);
-                    setActiveIndex(index);
-                    onMouseMove(e);cd
-                }}
-            >
-                <img
-                    src="https://images.pexels.com/photos/2071882/pexels-photo-2071882.jpeg?cs=srgb&dl=pexels-wojciech-kumpicki-1084687-2071882.jpg&fm=jpg"
-                    alt="Before Image"
-                    className="comparison-image--before"
-                />
-                <div
-                    ref={el => imageAfterRefs.current[index] = el}
-                    className="comparison-image--after"
-                >
-                    <img
-                        src="https://i.pinimg.com/736x/2c/8e/98/2c8e981280d108b806c2e07bfbcc15b9.jpg"
-                        alt="After Image"
+                    <div
+                        ref={el => imageAfterRefs.current[index] = el}
+                        className="comparison-image--after "
+                    >
+                        <img
+                            src={image.after}
+                            alt="After Image"
+                            className="comparison-image--after object-cover object-center"
+                        />
+                    </div>
+                    <motion.div
+                        ref={el => sliderHandleRefs.current[index] = el}
+                        className="slider-handle"
+                        drag="x"
+                        dragConstraints={{ left: 0, right: sliderRefs.current[index]?.offsetWidth }}
+                        onDrag={(event, info) => moveSlider(info.point.x - sliderRefs.current[index].getBoundingClientRect().left, index)}
                     />
+                    <p className="label label--left">Image One</p>
+                    <p className="label label--right">Image Two</p>
                 </div>
-
-                <div
-                    ref={el => sliderHandleRefs.current[index] = el}
-                    className="slider-handle" />
-                <p className="label label--left">Image One</p>
-                <p className="label label--right">Image Two</p>
-            </div>
-        ))}
+            ))}
         </div>
-    </div>
-     */}
-    </div>
-);
+    );
 }
-export default ImageSlider 
+export default ImageSlider;

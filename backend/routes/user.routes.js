@@ -21,6 +21,8 @@ router.post('/login', [
     userController.loginUser
 );  // logs in a user
 
+
+
 router.get('/profile',authMiddleware.authUser, userController.getUserProfile);  // gets the user profile
 
 router.get('/logout', authMiddleware.authUser, userController.logoutUser);  // logs out a user

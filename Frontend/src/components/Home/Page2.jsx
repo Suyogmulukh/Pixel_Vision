@@ -23,7 +23,7 @@ const Page2 = () => {
     })
   })
   return (
-    <div id='section2' className='bg-cyan-100 text-center p-10 text-black'>
+    <div id='section2' className='bg-cyan-50 text-center p-10 text-black'>
       <h3 className='text-gray-500 text-xl font-[anzo] '>
         Ⓒsuyog & sahil | designed and developed
         </h3>

@@ -31,13 +31,13 @@ const Page1 = () => {
     <div id='page1' onMouseMove={(e)=>{
       mouseMoving (e)
     }} 
-    className='h-screen p-6 bg-cyan-100 relative'>
+    className='h-screen p-6 bg-cyan-50 relative'>
         <div id='page1-in' className='relative shadow-2xl p-24 shadow-gray-700 h-full bg-cover w-full rounded-[30px] 
         bg-cyan-100'>
           <div className='h-96 w-[45%] mt-6 absolute 
           bg-[url(https://smashinglogo.com/static/img/illustrations/logo-builder.webp)] bg-cover'>
           </div>
-        <Navbar userInfo={userInfo} />  
+        <Navbar userInfo={userInfo}/>  
         <TiltText abc={tiltRef} />
         <Page1Button/>
      </div>
