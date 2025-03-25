@@ -3,7 +3,7 @@ import Page2Button from '../cards/Page2Button'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import TiltText from '../cards/TiltText'
-import Navbar from '../inputs/Navbar'
+import Navbar2 from '../inputs/Navbar2'
 
 const Page1 = () => {
 
@@ -37,7 +37,7 @@ const Page1 = () => {
           <div className='h-96 w-[45%] mt-6 absolute 
           bg-[url(https://smashinglogo.com/static/img/illustrations/logo-builder.webp)] bg-cover'>
           </div>
-        <Navbar userInfo={userInfo} />  
+        <Navbar2 userInfo={userInfo} />  
         <TiltText abc={tiltRef} />
         <Page2Button/>
      </div>

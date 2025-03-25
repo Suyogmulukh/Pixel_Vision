@@ -8,24 +8,39 @@ import PasswordInput from '../components/inputs/PasswardInput'
 const UserLogin = () => {
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
-  const [ userData, setUserData ] = useState({})
-  const [ error, setError ] = useState('') // State for error message
+  const [ isLoading, setIsLoading ] = useState(false)
+  const [ error, setError ] = useState('')
   const navigate = useNavigate()
-  const { user, setUser } = useContext(UserDataContext)
+  const { setUser } = useContext(UserDataContext)
+
+  const validateForm = () => {
+    if (!email || !password) {
+      setError('All fields are required')
+      return false
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setError('Please enter a valid email')
+      return false
+    }
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters')
+      return false
+    }
+    return true
+  }
 
   const submitHandler = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
+    setError('')
 
-    const userData = {
-      email: email,
-      password: password
-    }
-    
-    setEmail('')
-    setPassword('')
+    if (!validateForm()) return
 
+    setIsLoading(true)
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login`, userData)
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login`, {
+        email,
+        password
+      })
       if (response.status === 200) {
         const data = response.data
         setUser(data.user)
@@ -33,7 +48,9 @@ const UserLogin = () => {
         navigate('/home')
       }
     } catch (error) {
-      setError('Incorrect email or password') // Set error message
+      setError(error.response?.data?.message || 'Login failed. Please check your credentials.')
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -53,14 +70,16 @@ const UserLogin = () => {
           </div>
         </div>
         <div className="w-2/5 h-[68vh] bg-white rounded-r-lg relative p-16 shadow-lg shadow-cyan-200/20">
-          <form onSubmit={(e) => {
-            submitHandler(e)
-          }}>
+          <form onSubmit={submitHandler}>
             <h4 className="text-xl font-semibold mb-9 px-2">Login</h4>
-            <input type='text' placeholder='Email' className='input-box'
+            <input 
+              type='email' 
+              placeholder='Email' 
+              className='input-box'
               value={email}
-              onChange={({target})=>{
-                setEmail(target.value)
+              onChange={(e) => {
+                setEmail(e.target.value)
+                setError('')
               }}       
             />
             <PasswordInput
@@ -68,14 +87,19 @@ const UserLogin = () => {
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value)
+                setError('')
               }}
-              required type="password"
-              placeholder='password'
+              required
+              minLength={6}
+              placeholder='Password'
             />
-            {error && <p className="text-red-500 text-sm">{error}</p>} {/* Display error message */}
+            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
             <button
               className='btn-primary'
-            >Login</button>
+              disabled={isLoading}
+            >
+              {isLoading ? 'Logging in...' : 'Login'}
+            </button>
           </form>
           <p className="text-xs text-slate-500 text-center my-4">
             OR

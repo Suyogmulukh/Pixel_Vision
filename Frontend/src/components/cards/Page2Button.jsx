@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Page1Button = () => {
   return (
     <div className='absolute left-0 p-10 flex items-end justify-between bottom-0 w-full'>
-      <Link to= '/user-login' className=' w-44 h-12 mb-[520px] pl-8 pt-3 bg-black rounded-2xl font-semibold text-gray-100 text-sm  absolute ml-[1250px] hover:bg-gray-700'> TRY Pixel Vision </Link>
+      <Link to= '/user-login' className=' w-44 h-12 mb-[520px] pl-8 pt-3 bg-black rounded-2xl font-semibold text-gray-100 text-sm  absolute ml-[1200px] hover:bg-gray-700'> TRY Pixel Vision </Link>
         <div className=''>
             <h2  className=' text-xl font-[anzo2] ml-14 text-gray-700'> BRAND DISIGN | WEBSITE DISIGN </h2>
             <h3  className=' text-xl font-[anzo3] ml-14 text-black '> @PIXEL VISION </h3>

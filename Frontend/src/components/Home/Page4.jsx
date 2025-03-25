@@ -18,7 +18,7 @@ const Page4 = () => {
   }, [hasViewed]);
 
   return (
-    <div className=" text-white h-[500px] flex flex-col bg-cyan-50">
+    <div className=" text-white h-[500px] flex flex-col relative  w-screen bg-gray-300">
       <motion.div
         className="bg-black mt-20 h-[400px] w-80 absolute ml-[135px] rounded-3xl hover:bg-gray-800 border-4 border-solid border-gray-600"
         whileHover={{ scale: 1.05 }}
@@ -48,7 +48,7 @@ const Page4 = () => {
         <p className="absolute mt-[290px] ml-8 font-light text-gray-400 ">Bring your blurred, faded, and damaged photos back to life, making them clearer and more vibrant than ever before.</p>
       </motion.div>
       <motion.div
-        className="bg-black mt-20 h-[400px] w-80 absolute ml-[72%] rounded-3xl border-4 border-solid border-gray-700 hover:bg-gray-600"
+        className="bg-black mt-20 h-[400px] w-80 absolute ml-[71%] rounded-3xl border-4 border-solid border-gray-700 hover:bg-gray-600"
         whileHover={{ scale: 1.05 }}
         initial={{ opacity: 0, y: 50 }}
         animate={hasViewed ? { opacity: 1, y: 0 } : {}}

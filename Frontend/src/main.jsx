@@ -4,13 +4,16 @@ import App from './App.jsx'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import UserContext from './context/UserContext.jsx'
+import { HelmetProvider } from 'react-helmet-async'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-     <UserContext>
-       <BrowserRouter>
-         <App />
-       </BrowserRouter>
-     </UserContext>
+    <HelmetProvider>
+      <UserContext>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </UserContext>
+    </HelmetProvider>
   </StrictMode>,
 )

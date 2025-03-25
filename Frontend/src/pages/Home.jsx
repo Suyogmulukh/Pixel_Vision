@@ -6,8 +6,9 @@ import Page3 from '../components/Home/Page3'
 import Page4 from '../components/Home/Page4'
 import Page5 from '../components/Home/Page5'
 import Page6 from '../components/Home/Page6'
-import Pages7 from '../components/Home/Page7'
-import Pages8 from '../components/Home/Page8'
+import Page7 from '../components/Home/Page7'
+import Page8 from '../components/Home/Page8'
+import Page9 from '../components/Home/Page9'
 
 const Home = () => {
 
@@ -17,12 +18,13 @@ const Home = () => {
     {/* <Header /> */}
     <Page1 />
     <Page2/>
-    <Pages7/>
+    <Page7/>
     <Page4/>
     <Page6/>
     <Page5/>
-    <Pages8/>
+    <Page8/>
     <Page3/>
+    <Page9 />
     </div>
     </>
   )

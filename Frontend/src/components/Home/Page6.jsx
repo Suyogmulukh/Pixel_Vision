@@ -32,7 +32,7 @@ const Page6 = () => {
 
   return (
     <motion.div 
-      className=" text-white h-[600px] flex flex-col relative bg-cyan-50"
+      className=" text-white h-[600px] flex flex-col relative shadow-gray-700 bg-cover w-screen bg-gray-300"
       initial={{ opacity: 0 }}
       animate={hasViewed ? { opacity: 1 } : {}}
       transition={{ duration: 0.9 }}
@@ -43,7 +43,6 @@ const Page6 = () => {
         whileTap={{ scale: 0.95 }}
         whileDrag={{ scale: 1.1 }}
         drag
-        tap
         initial={{ opacity: 0, y: 50 }}
         animate={hasViewed ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 1.2, delay: 1.2 }}
@@ -57,7 +56,6 @@ const Page6 = () => {
         whileTap={{ scale: 0.95 }}
         whileDrag={{ scale: 1.1 }}
         drag
-        tap
         initial={{ opacity: 0, y: 50 }}
         animate={hasViewed ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 1.3, delay: 1.3 }}
@@ -66,12 +64,11 @@ const Page6 = () => {
         <p className="absolute mt-[290px] ml-8 font-light text-gray-400">Bring out the full spectrum of colors in your photos, enhancing the tones and creating natural and vivid images.</p>
       </motion.div>
       <motion.div
-        className="bg-black mt-20 h-[400px] w-80 absolute ml-[72%] rounded-3xl hover:bg-gray-800 border-4 border-solid border-gray-600"
+        className="bg-black mt-20 h-[400px] w-80 absolute ml-[71%] rounded-3xl hover:bg-gray-800 border-4 border-solid border-gray-600"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         whileDrag={{ scale: 1.1 }}
         drag
-        tap
         initial={{ opacity: 0, y: 50 }}
         animate={hasViewed ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 1.5, delay: 1.4 }}

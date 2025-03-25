@@ -1,8 +1,8 @@
 
   .comparison-image--before {
     position: absolute;
-    top: 0%;
-    left: 0%;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
@@ -35,9 +35,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border: 15px solid transparent;
+    height: 10px;
+    width: 20px;
+    /* background-color: aquamarine; */
     border-left-color: #fff;
     border-right: 0;
-    margin-left: -7px;
+    margin-left: -6px;
+    border-radius: 40%;
 }
 .slider-handle::after {
     content: '';
@@ -46,7 +50,11 @@
     right: 50%;
     transform: translate(-50%, -50%);
     border: 15px solid transparent;
+    height: 10px;
+    width: 20px;
+    /* background-color: aquamarine; */
     border-right-color: #fff;
     border-left: 0;
-    margin-right: -21px;
+    margin-right: -26px;
+    border-radius: 40%;
 }

@@ -1,14 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import '../../App.css';
-import faceenhancer1 from '../../assets/face-enhancer-1.jpg';
-import faceenhancer2 from '../../assets/face-enhancer-2.jpg';
-// import color1 from '../../assets/color-1.jpg';
-// import color2 from '../../assets/color-2.jpg';
-// import imageenhancer1 from '../../assets/image-enhaces-1.jpg';
-// import imageenhancer2 from '../../assets/image-enhaces-2.jpg';
+import faceenhancer1 from '../../assets/face-enhancer-1-removebg-preview.png';
+import faceenhancer2 from '../../assets/face-enhancer-2-removebg-preview.png'
 
-const ImageSlider2 = () => {
+const ImageSlider3 = () => {
     const sliderRefs = useRef([]);
     const sliderHandleRefs = useRef([]);
     const imageAfterRefs = useRef([]);
@@ -28,10 +23,23 @@ const ImageSlider2 = () => {
     };
 
     const moveSlider = (offsetX, index) => {
-        const percentage = (offsetX / sliderRefs.current[index].offsetWidth) * 100;
+        const sliderWidth = sliderRefs.current[index].offsetWidth;
+        const percentage = (offsetX / sliderWidth) * 100;
+    
+        // Move slider handle
         sliderHandleRefs.current[index].style.left = `${percentage}%`;
-        imageAfterRefs.current[index].style.clip = `rect(0, ${offsetX}px, ${sliderRefs.current[index].offsetHeight}px, 0)`;
+    
+        // Clip the after image dynamically
+        imageAfterRefs.current[index].style.clipPath = `inset(0 ${sliderWidth - offsetX}px 0 0)`;
+    
+        // Adjust label positions
+        const afterLabel = sliderRefs.current[index].querySelector('.after-label');
+        const beforeLabel = sliderRefs.current[index].querySelector('.before-label');
+    
+        if (afterLabel) afterLabel.style.left = `${offsetX + 10}px`;
+        if (beforeLabel) beforeLabel.style.left = `${offsetX - 80}px`;
     };
+    
 
     const onMouseMove = (event) => {
         if (!isActive || activeIndex === null) return;
@@ -64,12 +72,12 @@ const ImageSlider2 = () => {
     ];
 
     return (
-        <div className='relative top-48 gap-16 flex items-center justify-between'>
+        <div className='relative h-screen w-fit'>
             {images.map((image, index) => (
                 <div
                     key={index}
                     ref={el => sliderRefs.current[index] = el}
-                    className="comparison-container ml-32 -top-36 h-56 w-72 overflow-hidden relative rounded-3xl"
+                    className="comparison-container h-[650px] w-[600px] overflow-hidden relative mt-8"
                     onMouseDown={(e) => {
                         setIsActive(true);
                         setActiveIndex(index);
@@ -81,33 +89,31 @@ const ImageSlider2 = () => {
                         onMouseMove(e);
                     }}
                 >
+
                     <img
                         src={image.before}
                         alt="Before Image"
-                        className="comparison-image--before object-cover object-center"
+                        className="comparison-image--before object-cover object-bottom select-none" 
                     />
                     <div
                         ref={el => imageAfterRefs.current[index] = el}
-                        className="comparison-image--after "
+                        className="comparison-image--after absolute top-0 left-0 h-full w-full"
                     >
                         <img
                             src={image.after}
                             alt="After Image"
-                            className="comparison-image--after object-cover object-center"
+                            className="comparison-image--after object-cover object-bottom select-none"
                         />
+                        <div className="absolute top-4 text-sm bg-black text-white px-3 py-1 rounded-full pointer-events-none select-none before-label">Before</div>
                     </div>
-                    <motion.div
+                    <div
                         ref={el => sliderHandleRefs.current[index] = el}
                         className="slider-handle"
-                        drag="x"
-                        dragConstraints={{ left: 0, right: sliderRefs.current[index]?.offsetWidth }}
-                        onDrag={(event, info) => moveSlider(info.point.x - sliderRefs.current[index].getBoundingClientRect().left, index)}
                     />
-                    <p className="label label--left">Image One</p>
-                    <p className="label label--right">Image Two</p>
+                    <div className="absolute top-4 text-sm bg-black text-white px-3 py-1 rounded-full pointer-events-none select-none after-label">After</div>
                 </div>
             ))}
         </div>
     );
 }
-export default ImageSlider2;
+export default ImageSlider3;

@@ -7,9 +7,8 @@ import Start from './pages/start'
 import UserProtectWrapper from './pages/UserProtectionWrapper'
 import UserLogout from './pages/UserLogout'
 import UploadImage from './pages/UploadImage'
-import EnhancesImage from './pages/enhancesImage' 
-import ImageGallery from './pages/imageGallery'
 
+import ImageGallery from './pages/imageGallery'
 
 const App = () => {
   return (
@@ -34,12 +33,6 @@ const App = () => {
           element={
             <UserProtectWrapper>
               <UploadImage />
-            </UserProtectWrapper>
-          } />
-          <Route path='/enhancesImage'
-          element={
-            <UserProtectWrapper>
-              <EnhancesImage />
             </UserProtectWrapper>
           } />
           <Route path='/imageGallery'

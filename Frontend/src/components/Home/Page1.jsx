@@ -32,8 +32,7 @@ const Page1 = () => {
       mouseMoving (e)
     }} 
     className='h-screen p-6 bg-cyan-50 relative'>
-        <div id='page1-in' className='relative shadow-2xl p-24 shadow-gray-700 h-full bg-cover w-full rounded-[30px] 
-        bg-cyan-100'>
+        <div  className='relative shadow-2xl p-24 shadow-gray-700 h-full bg-cover w-full rounded-[30px] bg-gray-300'>
           <div className='h-96 w-[45%] mt-6 absolute 
           bg-[url(https://smashinglogo.com/static/img/illustrations/logo-builder.webp)] bg-cover'>
           </div>

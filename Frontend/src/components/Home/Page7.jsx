@@ -20,7 +20,7 @@ const Page7 = () => {
   };
 
   return (
-    <section ref={ref} className="bg-cyan-50 text-black text-center py-16 px-6">
+    <section ref={ref} className=" text-black text-center py-16 px-6 relative shadow-2xl shadow-gray-700 h-full bg-cover w-screen bg-gray-300">
       <h4 className="text-purple-700 text-base tracking-widest mb-4 font-bold">OUR SOLUTIONS</h4>
       <motion.h1
         initial="hidden"
