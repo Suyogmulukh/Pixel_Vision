@@ -1,5 +1,4 @@
-
-  .comparison-image--before {
+.comparison-image--before {
     position: absolute;
     top: 0;
     left: 0;
@@ -27,6 +26,13 @@
     background-color: #fff;
     cursor: ew-resize;
     z-index: 2;
+    transition: background-color 0.3s ease;
+}
+.slider-handle:hover {
+    background-color: #00bcd4;
+}
+.slider-handle:focus {
+    outline: 2px solid #00bcd4;
 }
 .slider-handle::before {
     content: '';

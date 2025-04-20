@@ -1,4 +1,3 @@
-import React from 'react'
 import LOGO from '../../assets/logo.svg'
 import { Link } from "react-router-dom";
 import { FaArrowRightLong } from "react-icons/fa6";

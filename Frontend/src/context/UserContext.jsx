@@ -7,7 +7,7 @@ const UserContext = ({ children }) => {
 
     const [ user, setUser ] = useState({
         email: '',
-        fullName:'',
+        Password:'',
     })
 
     return (

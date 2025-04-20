@@ -100,8 +100,10 @@ const processEnhancement = async (inputPath, filter, filterType = null) => {
       return await backgroundEnhancer(inputPath, originalCaseFilterType);
     case 'face-retouch':
       return await faceRetouch(inputPath, originalCaseFilterType);
-    case 'face-enhancer':
-      return await faceEnhancer(inputPath, originalCaseFilterType);
+    case 'face-enhancer': {
+      const faceEnhancerInstance = new faceEnhancer();
+      return await faceEnhancerInstance.processEnhancement(inputPath, originalCaseFilterType);
+    }
     case 'sharpener':
       return await sharpener(inputPath, originalCaseFilterType);
     default:

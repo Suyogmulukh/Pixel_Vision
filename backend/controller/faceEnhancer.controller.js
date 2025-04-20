@@ -50,12 +50,15 @@ const FaceEnhancer = class {
                 [-1, -1, -1]
             ]),
 
-            'detailed': () => imageData
-                .contrast(0.2)
-                .brightness(0.1),
+            'detailed': () => {
+                const brightnessValue = Math.min(Math.max(1.1, -1), 1); // Clamp value between -1 and 1
+                return imageData
+                    .contrast(0.2)
+                    .brightness(brightnessValue);
+            },
 
             'glow': () => imageData
-                .brightness(1.2)
+                .brightness(0.14)
                 .gaussian(4),
 
             'definition': () => imageData
@@ -67,8 +70,8 @@ const FaceEnhancer = class {
                 .posterize(6),
 
             'cinematic': () => imageData
-                .contrast(0.2)
-                .brightness(0.1)
+                .contrast(0.1)
+                .brightness(1.1)
                 .gaussian(0.5),
 
             'professional': () => imageData
@@ -79,7 +82,7 @@ const FaceEnhancer = class {
             'artistic': () => imageData
                 .sepia(0.3)
                 .contrast(0.2)
-                .brightness(0.1),
+                .brightness(1.1),
 
             'dramatic': () => imageData
                 .contrast(0.4)

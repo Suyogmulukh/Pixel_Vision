@@ -49,11 +49,11 @@ const FaceRetoucher = class {
             'smooth': () => imageData.gaussian(4),
 
             'soft-glow': () => imageData
-                .brightness(0.6)
+                .brightness(0.8)
                 .gaussian(7),
 
             'sharp': () => imageData
-                .contrast(0.4)
+                .contrast(0.7)
                 .unsharp(),
 
             'skin-tone': () => imageData
@@ -66,23 +66,23 @@ const FaceRetoucher = class {
             'soft-focus': () => imageData.blur(8),
 
             'professional-retouch': () => imageData
-                .contrast(0.3)
-                .brightness(0.2)
+                .contrast(0.2)
+                .brightness(1.2)
                 .gaussian(3),
 
             'glamour': () => imageData
-                .brightness(0.5)
+                .brightness(1.5)
                 .contrast(0.3)
                 .sepia(0.1),
 
             'vintage-portrait': () => imageData
                 .grayscale()
                 .contrast(0.2)
-                .brightness(0.1),
+                .brightness(1.5),
 
             'dramatic-light': () => imageData
-                .contrast(0.5)
-                .brightness(-0.2)
+                .contrast(0.2)
+                .brightness(-0.1)
         };
 
         if (!retouchStyles[filterType]) {

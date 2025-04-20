@@ -9,6 +9,7 @@ const UserSignup = () => {
   const [ password, setPassword ] = useState('')
   const [ fullName, setFullName ] = useState('')
   const [ userData, setUserData ] = useState({})
+  const [error, setError] = useState(''); // Add state for error messages
 
 
   const navigate = useNavigate()
@@ -17,6 +18,7 @@ const UserSignup = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault()
+    setError(''); // Clear any previous errors
 
    const newUser = {
       fullname: fullName,
@@ -24,18 +26,26 @@ const UserSignup = () => {
       password: password,
     }
 
-    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`, newUser)
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`, newUser);
 
-    if (response.status === 201) {
-      const data = response.data
-      setUser(data.user)
-      localStorage.setItem('token', data.token)
-      navigate('/home')
+      if (response.status === 201) {
+        const data = response.data;
+        setUser(data.user);
+        localStorage.setItem('token', data.token);
+        navigate('/home');
+      }
+
+      setEmail('');
+      setFullName('');
+      setPassword('');
+    } catch (err) {
+      if (err.response && err.response.status === 409) {
+        setError('Email already exists. Please use a different email.');
+      } else {
+        setError('An error occurred. Please try again later.');
+      }
     }
-
-    setEmail('')
-    setFullName('')
-    setPassword('')
   }
 
   return (
@@ -61,6 +71,7 @@ const UserSignup = () => {
             submitHandler(e)
           }}>
               <h4 className="text-xl font-semibold mb-9 px-2">SignUp</h4>   
+              {error && <p className="text-red-500 text-sm mb-4">{error}</p>} {/* Display error message */}
               <input
                 required
                 className='input-box'

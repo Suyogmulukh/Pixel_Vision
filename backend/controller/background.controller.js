@@ -47,7 +47,7 @@ const Background = class {
                     { apply: 'saturate', params: [50] },
                     { apply: 'contrast', params: [0.2] }
                 ])
-                .brightness(0.1),
+                .brightness(1.1),
 
             'cinematic': () => imageData
                 .contrast(0.5)
@@ -69,7 +69,7 @@ const Background = class {
                 .color([
                     { apply: 'saturate', params: [40] }
                 ])
-                .brightness(0.1),
+                .brightness(1.1),
 
             'pastel': () => imageData
                 .color([

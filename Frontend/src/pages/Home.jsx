@@ -9,10 +9,12 @@ import Page6 from '../components/Home/Page6'
 import Page7 from '../components/Home/Page7'
 import Page8 from '../components/Home/Page8'
 import Page9 from '../components/Home/Page9'
+import UserProtectWrapper from './UserProtectionWrapper'
 
 const Home = () => {
 
   return (
+<UserProtectWrapper>
     <>
     <div >
     {/* <Header /> */}
@@ -27,6 +29,7 @@ const Home = () => {
     <Page9 />
     </div>
     </>
+        </UserProtectWrapper>
   )
 }
 

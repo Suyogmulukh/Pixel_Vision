@@ -22,11 +22,6 @@ const Navbar2 = ({ userInfo }) => {
   return (
     <div className=' flex items-center justify-between drop-shadow-xl relative -top-16 w-[104%] '>
       <img src={LOGO} alt='pixel Vision' className=' h-14 bg-transparent -top-24'/>
-      {/* <div className='flex items-center justify-around absolute gap-12 ml-80 '>
-        <h2 className='text-xl font-semibold ml-20'> Enhances </h2>
-        <h2 className='text-xl'>enhances </h2>
-        <h2 className='text-xl'>enhances </h2>
-      </div> */}
     <div className=" flex items-center justify-around absolute gap-12 ml-96">
     <Link to={"/User-Signup"} className="text-gray-600 font-semibold hover:text-blue-400 font-[anzo] text-xl relative -mt-1 ml-32">
             Help <FaHandsHelping className="relative ml-[47px] -mt-6 text-lg" />

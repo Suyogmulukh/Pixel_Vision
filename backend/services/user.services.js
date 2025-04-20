@@ -17,17 +17,12 @@ module.exports.createUser = async ({
         // Hash password before creating user
         const hashedPassword = await userModel.hashPassword(password);
         
-        const user = await userModel.create({
+        // Return the Mongoose document directly
+        return await userModel.create({
             fullname,
             email,
             password: hashedPassword,
         });
-
-        // Remove password from response
-        const userResponse = user.toObject();
-        delete userResponse.password;
-
-        return userResponse;
     } catch (error) {
         throw new Error(error.message || 'Error creating user');
     }
