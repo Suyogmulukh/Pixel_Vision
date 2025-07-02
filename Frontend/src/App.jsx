@@ -8,6 +8,7 @@ import UserProtectWrapper from './pages/UserProtectionWrapper';
 import UserLogout from './pages/UserLogout';
 import UploadImage from './pages/uploadImage';
 import ImageGallery from './pages/imageGallery';
+import Feedback from './pages/feedback';
 
 const App = () => {
   return (
@@ -44,6 +45,13 @@ const App = () => {
               <ImageGallery />
             </UserProtectWrapper>
           }/>
+        <Route
+        path="/feedback"
+        element={
+          <UserProtectWrapper>
+            <Feedback />
+          </UserProtectWrapper>
+        }/>
       </Routes>
     </div>
   );

@@ -5,7 +5,7 @@ import ImagePreview from "../components/cards/ImagePreview";
 import { enhancedImageAPI } from "../utils/imageEnhancesApi";
 import Logo from "../assets/logo.svg";
 
-const imageGallery = () => {
+const ImageGallery = () => {
     const [uploadImage, setUploadImage] = useState(null);
     const [enhancedImage, setEnhancedImage] = useState(null);
     const [loading, setloading] = useState(false);
@@ -72,10 +72,16 @@ const imageGallery = () => {
                                         </button>
                                     )}
                                     <button
-                                        onClick={() => navigate('/home')}
+                                        onClick={() => navigate('/uploadImage')}
                                         className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 font-[anzo]"
                                     >
                                         Create a New Image
+                                    </button>
+                                    <button
+                                        onClick={() => navigate('/feedback')}
+                                        className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 font-[anzo]"
+                                    >
+                                        feedback
                                     </button>
                                 </div>
                             </div>
@@ -87,4 +93,4 @@ const imageGallery = () => {
     );
 };
 
-export default imageGallery;
+export default ImageGallery;

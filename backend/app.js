@@ -7,6 +7,7 @@ const connectToDb = require('./db/db')
 const userRoutes = require('./routes/user.routes')
 const imageRoutes = require('./routes/image.routes')
 const enhanceRoutes = require('./routes/enhance.routes')
+const feedbackRoutes = require('./routes/feedback.routes')
 const fs = require('fs')
 const path = require('path')
 const cookies = require('cookie-parser')
@@ -41,6 +42,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use('/users', userRoutes)
 app.use("/image", imageRoutes)
 app.use("/image/enhance", enhanceRoutes)
+app.use("/api/feedback", feedbackRoutes)
 
 // Health check endpoint
 app.get('/health', (req, res) => {
